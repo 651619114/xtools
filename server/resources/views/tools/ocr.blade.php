@@ -70,9 +70,9 @@
                                                 <td>{{$value['created_at']}}</td>
                                                 <td>{{$value['updated_at']}}</td>
                                                 <td class="td-manage">
-                                                    <button class="layui-btn-danger layui-btn layui-btn-xs" onclick="member_del(this,{{$value['id']}})">删除</button>
                                                     <button class="layui-btn layui-btn layui-btn-xs" onclick="member_create(this,{{$value['id']}})">开始识别</button>
                                                     @if($value['status'] == 2)<button class="layui-btn layui-btn layui-btn-xs"><a href="/tool/ocrtool/download?id={{$value['id']}}" style="color:white">下载</a></button>@endif
+                                                    <button class="layui-btn-danger layui-btn layui-btn-xs" onclick="member_del(this,{{$value['id']}})">删除</button>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -192,5 +192,4 @@
         });
     }
 </script>
-
 </html>

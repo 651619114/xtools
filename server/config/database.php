@@ -46,11 +46,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => '47.95.231.54',
+            'host' => '132.232.76.101',
             'port' => '3306',
             'database' => 'xtools',
             'username' => 'root',
-            'password' => 'Xmf961111!',
+            'password' => 'Xmf961111',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8',
             'collation' => 'utf8_general_ci',

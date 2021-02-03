@@ -37,6 +37,12 @@ Route::any('/tool/ocrtool/upload', 'Admin\ToolsController@upload')->middleware('
 Route::any('/tool/ocrtool/create', 'Admin\ToolsController@create')->middleware('auth');
 Route::any('/tool/ocrtool/download', 'Admin\ToolsController@download')->middleware('auth');
 
+Route::any('/cloud/cloud', 'Admin\CloudController@cloudLists')->middleware('auth');
+Route::any('/cloud/cloud/delete', 'Admin\CloudController@cloudDelete')->middleware('auth');
+Route::any('/cloud/cloud/create', 'Admin\CloudController@create')->middleware('auth');
+Route::any('/cloud/cloud/upload', 'Admin\CloudController@upload')->middleware('auth');
+Route::any('/cloud/cloud/download', 'Admin\CloudController@download')->middleware('auth');
+
 Route::any('/sys/user/test', 'Admin\SysController@test');
 
 Route::view('/error', 'error')->name('error');
