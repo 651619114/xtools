@@ -43,6 +43,7 @@ Route::any('/cloud/cloud/create', 'Admin\CloudController@create')->middleware('a
 Route::any('/cloud/cloud/upload', 'Admin\CloudController@upload')->middleware('auth');
 Route::any('/cloud/cloud/download', 'Admin\CloudController@download')->middleware('auth');
 
-Route::any('/sys/user/test', 'Admin\SysController@test');
+Route::any('/cloud/cloud/test', 'Admin\CloudController@test');
+Route::get('/mail/send', 'MailController@send')->name('mail');
 
 Route::view('/error', 'error')->name('error');

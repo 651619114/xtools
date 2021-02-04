@@ -36,11 +36,15 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'host' => 'smtp.163.com',
+            'port' => '25',
+            'encryption' =>  null,
+            'username' => 'xmf12321@163.com',
+            'password' => 'XTMTJVUUDQZRWPKG',
+            'from' => [
+                'address' => 'xmf12321@163.com',
+                'name' => 'xingmf',
+            ],
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,8 +88,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => 'xmf12321@163.com',
+        'name' => 'xingmf',
     ],
 
     /*

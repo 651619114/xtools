@@ -43,10 +43,13 @@ class CloudController extends Controller
             if ($res['res']) {
                 $bool = Cloud::where('id', $request->input('id'))->update(['is_sync' => 2]);
                 if ($bool) {
+                    $this->log->info('上传文件至云端成功，真实文件名：' . $info['real_name'] . '本地文件名：' . $info['file_name']);
                     return $this->success('同步成功');
                 }
             } else {
                 //邮件
+                $this->log->info('上传文件至云端失败，真实文件名：' . $info['real_name'] . '本地文件名：' . $info['file_name']);
+                return redirect()->route('mail', ['info' => '上传至云端失败']);
             }
         } else {
             return $this->admin_error('文件不存在');
@@ -70,8 +73,8 @@ class CloudController extends Controller
         }
         $qn = new QNCloud();
         $res = $qn->delete($info['real_name']);
-        if(!$res['res']){
-            
+        if (!$res['res']) {
+            return redirect()->route('mail', ['info' => '云端文件删除失败']);
         }
 
         $res = Cloud::where('id', $request->input('id'))->delete();
@@ -127,7 +130,7 @@ class CloudController extends Controller
             if ($bool) {
                 $res = Cloud::insertGetId(['user_id' => $request->session()->get('user_id'), 'real_name' => $realName, 'file_name' => $newFileName, 'remote_path' => '', 'file_size' => $size, 'is_sync' => 1, 'created_at' => time()]);
                 if ($res) {
-                    $this->log->info('cloud上传文件[' . $newFileName . ']成功');
+                    $this->log->info('上传文件[' . $newFileName . ']成功');
                     return $this->success('上传成功');
                 } else {
                     return $this->admin_error('数据库操作失败');
@@ -153,9 +156,15 @@ class CloudController extends Controller
                 return $this->success('云端下载直链生成成功', ['url' => $res]);
             } else {
                 //邮件
+                return redirect()->route('mail', ['info' => '云端直链生成失败']);
             }
         } else {
             return $this->admin_error('文件不存在');
         }
+    }
+
+    public function test()
+    {
+        return redirect()->route('mail', ['info' => '测试']);
     }
 }

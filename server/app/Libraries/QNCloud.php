@@ -39,11 +39,11 @@ class QNCloud
     {
         if (!empty($fileName)) {
             $baseUrl = 'http://qnxip9k3n.hb-bkt.clouddn.com/' . $fileName;
-            $this->_downLoadUrl = $this->_auth->privateDownloadUrl($baseUrl);
+            $downLoadUrl = $this->_auth->privateDownloadUrl($baseUrl);
         } else {
-            $this->_downLoadUrl = '';
+            $downLoadUrl = '';
         }
-        return $this->_downLoadUrl;
+        return $downLoadUrl;
     }
 
     public function delete($filename = '')
