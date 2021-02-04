@@ -16,10 +16,6 @@
     <script src="{{ URL::asset('lib/layui/layui.js') }}" charset="utf-8"></script>
     <script type="text/javascript" src="{{ URL::asset('js/xadmin.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/webuploader.min.js') }}"></script>
-    <script>
-        // 是否开启刷新记忆tab功能
-        // var is_remember = false;
-    </script>
 </head>
 
 <body class="index">
@@ -61,7 +57,7 @@
                                                 <th>文件名</th>
                                                 <th>文件大小</th>
                                                 <th>创建时间</th>
-                                                <th width="300">下载直链(云端)</th>
+                                                <th width="300">下载直链(此链接为云端直链，下载速度较快，如链接失效点击右侧生成链接按钮重新生成即可)</th>
                                                 <th>是否同步</th>
                                                 <th>操作</th>
                                         </thead>
@@ -174,10 +170,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },
@@ -205,7 +198,7 @@
 
 
     function member_download(obj, id) {
-        layer.confirm('此操作将生成远程云端下载直链，有效期为十天，是否继续?', function(index) {
+        layer.confirm('此操作将生成远程云端下载直链，是否继续?', function(index) {
             $.ajax({
                 type: "POST", //提交方式 
                 url: "/cloud/cloud/download", //路径 
@@ -219,10 +212,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },

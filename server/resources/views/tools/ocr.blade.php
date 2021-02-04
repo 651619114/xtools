@@ -119,10 +119,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },
@@ -163,10 +160,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },
@@ -192,4 +186,5 @@
         });
     }
 </script>
+
 </html>

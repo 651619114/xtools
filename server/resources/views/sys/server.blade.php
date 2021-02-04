@@ -26,7 +26,8 @@
         <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
             <ul class="layui-tab-title">
                 <li class="home">
-                    <i class="layui-icon">&#xe68e;</i>我的桌面</li>
+                    <i class="layui-icon">&#xe68e;</i>我的桌面
+                </li>
             </ul>
             <div class="layui-unselect layui-form-select layui-form-selected" id="tab_right">
                 <dl>
@@ -70,7 +71,8 @@
                                                 <td>{{$value['updated_at']}}</td>
                                                 <td class="td-status">
                                                     @if($value['status'] == 1)
-                                                    <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td>
+                                                    <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>
+                                                </td>
                                                 @else
                                                 <span class="layui-btn layui-btn-danger layui-btn-mini">已禁用</span></td>
 
@@ -126,10 +128,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },
@@ -171,10 +170,7 @@
                             icon: 6
                         },
                         function() {
-                            //关闭当前frame
-                            xadmin.close();
-                            // 可以对父窗口进行刷新 
-                            xadmin.father_reload();
+                            location.reload();
                         });
 
                 },

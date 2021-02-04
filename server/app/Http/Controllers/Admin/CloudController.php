@@ -38,7 +38,7 @@ class CloudController extends Controller
             return $this->admin_error("未找到信息");
         }
         if (Storage::exists($info['file_name'])) {
-            $qn = new QNCloud('upload');
+            $qn = new QNCloud();
             $res = $qn->upload(Storage::path($info['file_name']), $info['real_name']);
             if ($res['res']) {
                 $bool = Cloud::where('id', $request->input('id'))->update(['is_sync' => 2]);
@@ -65,10 +65,15 @@ class CloudController extends Controller
             return $this->admin_error("未找到信息");
         }
         if (Storage::exists($info['file_name'])) {
+            //本地文件转入trunk文件夹备份
             Storage::move($info['file_name'], 'trush/' . $info['file_name']);
-        } else {
-            return $this->admin_error('文件已不存在');
         }
+        $qn = new QNCloud();
+        $res = $qn->delete($info['real_name']);
+        if(!$res['res']){
+            
+        }
+
         $res = Cloud::where('id', $request->input('id'))->delete();
 
         if ($res > 0) {
@@ -141,8 +146,8 @@ class CloudController extends Controller
             return $this->admin_error("未找到信息");
         }
         if (Storage::exists($info['file_name'])) {
-            $qn = new QNCloud('download', $info['real_name']);
-            $res = $qn->download();
+            $qn = new QNCloud();
+            $res = $qn->download($info['real_name']);
             if (!empty($res)) {
                 $bool = Cloud::where('id', $request->input('id'))->update(['remote_path' => $res]);
                 return $this->success('云端下载直链生成成功', ['url' => $res]);
